@@ -5,17 +5,18 @@
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
 
-var start = {
-	last1:1,
-	last2:0,
-	total:0,
-	stop:0,
-	swap:0
-};
 
-function fibPlus (maxNum, acc){
+
+function fibEvenSum (maxNum, acc){
+	// initialize the acc
+	acc = acc || {
+		last1:1,
+		last2:0,
+		total:0,
+		swap:0
+	};
+
 	//add the last two together
-	// console.log(start);
 	acc.swap = acc.last1 + acc.last2;
 	//move last1 to last2
 	acc.last2 = acc.last1;
@@ -28,10 +29,10 @@ function fibPlus (maxNum, acc){
 	}
 	//return either the next iteration of the function or the final value
 	if (acc.swap < maxNum){
-		return fibPlus(maxNum, acc);
+		return fibEvenSum(maxNum, acc);
 	} else {
 		return acc.total;
 	}
 }
 
-console.log(fibPlus(4000000, start));
+console.log(fibEvenSum(4000000));
