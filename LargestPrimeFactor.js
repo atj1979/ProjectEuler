@@ -17,6 +17,19 @@ function isPrime (num){
 	return true
 }
 
+function LargestPrimeFactors(num){
+	var start = Math.ceil(num/2);
+	var end = Math.floor(num * .25);
+	// console.log(start + " | " + end);
+	for (var i = start; i > end; i--){
+		// console.log("checking " + i);
+		if (isPrime(i) && num % i === 0){
+			return i;
+		}
+	}
+	return "no Answer";
+}
 
+console.log(LargestPrimeFactors(600851475143));
 
 
