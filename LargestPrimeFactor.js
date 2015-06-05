@@ -13,11 +13,12 @@ function isPrime (num, previousPrimes){
 }
 
 function LargestPrimeFactors(num){
+	var a = new Date();
 	var end = Math.sqrt(num);
-	var primesChecked = {};
+	var primesChecked = {"2":true};
 	var largestPrime = 0;
 	var numi = 1;
-	for (var i = 2; i < end; i++){ // build a list of all the prime numbers from 0 to sqrt(num)
+	for (var i = 3; i < end; i+=2){ // build a list of all the prime numbers from 0 to sqrt(num)
 		if (num % i === 0){ 
 			if (isPrime(i, primesChecked)){ // check to see if the number is prime, send along the prime list
 				primesChecked[""+i]=true; // if the number is prime - add it to the seive
@@ -28,10 +29,12 @@ function LargestPrimeFactors(num){
 				primesChecked[""+numi]=true; // if the number is prime - add it to the seive
 				largestPrime = numi > largestPrime ? numi : largestPrime; // check to see if the new number is the largest
 	} } }
+	var b = new Date();
+	console.log( b-a);
 	return largestPrime;
 }
 
-console.log(LargestPrimeFactors(6008234232351475143));
+console.log(LargestPrimeFactors(23423523522342232));
 
 
 // The largest increase in speed was adding in the ternarys in place of if statements.
